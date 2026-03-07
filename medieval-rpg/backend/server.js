@@ -111,9 +111,29 @@ io.on('connection', (socket) => {
     if (gameState.players[socket.id]) {
       gameState.players[socket.id].x = data.x;
       gameState.players[socket.id].y = data.y;
+      if (data.facingRight !== undefined) {
+         gameState.players[socket.id].facingRight = data.facingRight;
+      }
       
       // Optionally broadcast immediately, or wait for tick
       io.emit('stateUpdate', gameState.players);
+    }
+  });
+
+  // Handle attacking (Left Click)
+  socket.on('attack', () => {
+    if (gameState.players[socket.id] && !gameState.players[socket.id].isAttacking) {
+      gameState.players[socket.id].isAttacking = true;
+      gameState.players[socket.id].attackStartTime = Date.now();
+      io.emit('stateUpdate', gameState.players);
+      
+      // Cool down / complete animation
+      setTimeout(() => {
+        if (gameState.players[socket.id]) {
+          gameState.players[socket.id].isAttacking = false;
+          io.emit('stateUpdate', gameState.players);
+        }
+      }, 300); // 300ms swing duration
     }
   });
 

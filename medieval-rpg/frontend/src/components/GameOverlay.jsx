@@ -104,10 +104,11 @@ const GameOverlay = ({ user, onLogout }) => {
             const facingRight = p.facingRight !== undefined ? p.facingRight : true;
             
             if (!facingRight) {
-              // Flip horizontally
-              ctx.translate(p.x + size/2, p.y - size/2);
+              // Flip horizontally. We must translate to the center of the sprite's X position, 
+              // scale by -1 (flip), and then draw it at -size/2 to keep it centered on p.x
+              ctx.translate(p.x, p.y);
               ctx.scale(-1, 1);
-              ctx.drawImage(img, -size/2, 0, size, size);
+              ctx.drawImage(img, -size/2, -size/2, size, size);
             } else {
               // Draw normally centered
               ctx.drawImage(img, p.x - size/2, p.y - size/2, size, size);
