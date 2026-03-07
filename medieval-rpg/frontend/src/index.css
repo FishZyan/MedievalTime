@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Metamorphous&family=Open+Sans:wght@400;600&display=swap');
+
+:root {
+  --bg-color: #0d0a0b;
+  --text-primary: #e5d3b3;
+  --text-secondary: #8c7a6b;
+  --accent-gold: #cfaa63;
+  --accent-gold-hover: #e5c587;
+  --panel-bg: rgba(26, 20, 18, 0.85);
+  --panel-border: #4a3c31;
+  --input-bg: rgba(0, 0, 0, 0.6);
+  --error: #c0392b;
+  --success: #27ae60;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  min-height: 100vh;
+  /* Medieval themed background pattern */
+  background-image: radial-gradient(circle at center, #1a1412 0%, #000 100%);
+  overflow: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Auth Container */
+.auth-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: url('https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+  position: relative;
+}
+
+.auth-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+.auth-panel {
+  position: relative;
+  background: var(--panel-bg);
+  padding: 3rem 4rem;
+  border-radius: 8px;
+  border: 2px solid var(--panel-border);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.auth-title {
+  font-family: 'Metamorphous', cursive;
+  font-size: 2.5rem;
+  color: var(--accent-gold);
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+.auth-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input-group {
+  position: relative;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: var(--input-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 4px;
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 10px rgba(207, 170, 99, 0.3);
+}
+
+.btn-primary {
+  background: linear-gradient(to bottom, #7d6335, #574422);
+  color: var(--text-primary);
+  border: 1px solid var(--accent-gold);
+  padding: 0.8rem 1.5rem;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+  margin-top: 1rem;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(to bottom, #8f723e, #695228);
+  color: #fff;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.6), 0 0 15px rgba(207,170,99,0.4);
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+.auth-switch {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.auth-switch span {
+  color: var(--accent-gold);
+  cursor: pointer;
+  text-decoration: underline;
+  margin-left: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.auth-switch span:hover {
+  color: var(--accent-gold-hover);
+}
+
+.error-message {
+  color: var(--error);
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  background: rgba(192, 57, 43, 0.1);
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid rgba(192, 57, 43, 0.3);
+}
+
+/* Game container placeholder */
+.game-container {
+  display: flex;
+  flex: 1;
+  position: relative;
+}
+
+.game-canvas {
+  flex: 1;
+  background-color: #2c3e50; /* Placeholder for grass/dirt later */
+}
+
+.game-ui-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  padding: 1rem;
+}
+
+.player-info {
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  padding: 0.8rem 1.2rem;
+  border-radius: 4px;
+  display: inline-block;
+  pointer-events: auto;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+}
+
+.player-name {
+  font-family: 'Cinzel', serif;
+  color: var(--accent-gold);
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+}
+
+.btn-logout {
+  background: transparent;
+  border: 1px solid var(--text-secondary);
+  color: var(--text-secondary);
+  padding: 0.4rem 0.8rem;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.8rem;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.btn-logout:hover {
+  border-color: #fff;
+  color: #fff;
+}
