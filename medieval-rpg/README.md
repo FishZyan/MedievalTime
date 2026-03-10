@@ -1,30 +1,54 @@
 # Medieval Time RPG
 
-A multiplayer 2D RPG game with a medieval theme, built with React, Node.js, Socket.IO, and PostgreSQL.
+A 2D multiplayer RPG built with React, Node.js, Socket.IO, and PostgreSQL.
 
-## Features
-- **Real-time Multiplayer:** Players can connect and see each other moving around the map instantly using WebSockets.
-- **Authentication:** Secure user registration and login system with JWT and bcrypt hashing.
-- **2D Pixel Art:** Features a customized pixel art knight character that correctly flips horizontally based on the player's mouse position to determine facing direction.
-- **Dynamic Rendering:** Client-side HTML5 Canvas rendering for optimized game loops.
-- **PostgreSQL Database:** Persistent player accounts via Prisma ORM.
+## Prerequisites
+- **Node.js**: v18 or newer
+- **PostgreSQL**: Running locally or via a cloud provider
 
-## Tech Stack
-- **Frontend:** Vite, React, Socket.IO-Client
-- **Backend:** Node.js, Express, Socket.IO
-- **Database:** PostgreSQL, Prisma (v5)
+## Local Setup Instructions
 
-## How to Run
+### 1. Database & Backend Configuration
+1. Open a terminal and navigate to the backend directory:
+   ```bash
+   cd medieval-rpg/backend
+   ```
+2. Install the backend dependencies:
+   ```bash
+   npm install
+   ```
+3. Set up your environment variables by creating a `.env` file in the `backend` directory. At minimum, it should contain:
+   ```env
+   # PostgreSQL Connection String Example
+   DATABASE_URL="postgresql://postgres:password@localhost:5432/medieval_rpg"
+   JWT_SECRET="super_secret_jwt_key"
+   PORT=3001
+   ```
+4. Push the Prisma schema to your database (Make sure PostgreSQL is running!):
+   ```bash
+   npx prisma db push
+   ```
+5. Start the backend development server:
+   ```bash
+   npm run dev
+   ```
 
-### Backend
-1. Navigate to the `backend` directory.
-2. Ensure you have a `.env` file with `DATABASE_URL` and `JWT_SECRET`.
-3. Install dependencies: `npm install`
-4. Run the development server: `npm run dev`
+### 2. Frontend Configuration
+1. Open a new terminal window and navigate to the frontend directory:
+   ```bash
+   cd medieval-rpg/frontend
+   ```
+2. Install the frontend dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the Vite development server:
+   ```bash
+   npm run dev
+   ```
 
-### Frontend
-1. Navigate to the `frontend` directory.
-2. Install dependencies: `npm install`
-3. Run the development server: `npm run dev`
+### 3. Play the Game!
+Once both servers are running successfully, open your web browser and navigate to:
+**http://localhost:5173**
 
-Navigate to `http://localhost:5173` in your browser to play!
+> **Tip For Multiplayer Testing**: Open an incognito window or a different web browser side-by-side to register a second account. You'll see both characters sync and move together in real-time across the canvas!

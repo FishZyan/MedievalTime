@@ -93,12 +93,14 @@ const gameState = {
 };
 
 io.on('connection', (socket) => {
-  console.log(`User connected: ${socket.id}`);
+  const username = socket.handshake.auth?.username || 'Knight';
+  console.log(`User connected: ${socket.id} (${username})`);
 
   // Create default player state
   gameState.players[socket.id] = {
     x: 400,
     y: 300,
+    username: username,
     color: '#' + Math.floor(Math.random()*16777215).toString(16),
   };
 
